@@ -4,9 +4,6 @@ databases:
     user: vibe_user
     plan: free
     region: singapore # optional, or allow auto
-    envVars:
-      - key: POSTGRES_PASSWORD
-        generateValue: true
 
 services:
   - type: web
