@@ -1,3 +1,13 @@
+databases:
+  - name: vibe-todo-db
+    databaseName: todo_db
+    user: vibe_user
+    plan: free
+    region: singapore # optional, or allow auto
+    envVars:
+      - key: POSTGRES_PASSWORD
+        generateValue: true
+
 services:
   - type: web
     name: vibe-todo-server
@@ -8,6 +18,8 @@ services:
     startCommand: node index.js
     envVars:
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: vibe-todo-db
+          property: connectionString
       - key: NODE_VERSION
         value: 20.11.0
