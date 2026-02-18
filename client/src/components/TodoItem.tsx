@@ -75,13 +75,13 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         )}
       </AnimatePresence>
 
-      <div className="flex items-center gap-5 overflow-hidden flex-1 z-10">
+      <div className="flex items-center gap-3 overflow-hidden flex-1 z-10">
         {!isEditing && (
           <motion.button
             whileTap={{ scale: 0.8 }}
             onClick={handleToggle}
             className={cn(
-              "relative flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-300 cursor-pointer shadow-sm",
+              "relative flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-300 cursor-pointer shadow-sm",
               todo.completed
                 ? "bg-gradient-to-br from-green-400 to-emerald-600 border-transparent shadow-green-500/30 shadow-md"
                 : "bg-white dark:bg-slate-800 border-muted-foreground/30 hover:border-primary hover:shadow-primary/20"
@@ -95,7 +95,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
                   exit={{ scale: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <Check className="w-5 h-5 text-white" strokeWidth={3.5} />
+                  <Check className="w-3 h-3 sm:w-5 sm:h-5 text-white" strokeWidth={3.5} />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -109,13 +109,13 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
               value={editTitle}
               onChange={(e) => setEditTitle(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="h-10 text-lg font-medium bg-background/50"
+              className="h-9 sm:h-10 text-base sm:text-lg font-medium bg-background/50"
             />
           </div>
         ) : (
           <span 
             className={cn(
-              "text-lg transition-all duration-300 select-none cursor-pointer truncate font-medium tracking-tight",
+              "text-base sm:text-lg transition-all duration-300 select-none cursor-pointer truncate font-medium tracking-tight",
               todo.completed 
                 ? "text-muted-foreground line-through decoration-muted-foreground/40 decoration-2" 
                 : "text-foreground"
@@ -127,17 +127,17 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         )}
       </div>
 
-      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-2 group-hover:translate-x-0 z-10">
+      <div className="flex items-center gap-0 sm:gap-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-200 translate-x-0 lg:translate-x-2 lg:group-hover:translate-x-0 z-10">
         {isEditing ? (
           <>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <Button size="icon" variant="ghost" onClick={handleUpdate} className="h-9 w-9 text-green-600 hover:text-green-700 hover:bg-green-100 rounded-xl">
-                <Check className="h-5 w-5" />
+              <Button size="icon" variant="ghost" onClick={handleUpdate} className="h-8 w-8 sm:h-9 sm:w-9 text-green-600 hover:text-green-700 hover:bg-green-100 rounded-xl">
+                <Check className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <Button size="icon" variant="ghost" onClick={handleCancel} className="h-9 w-9 text-red-600 hover:text-red-700 hover:bg-red-100 rounded-xl">
-                <X className="h-5 w-5" />
+              <Button size="icon" variant="ghost" onClick={handleCancel} className="h-8 w-8 sm:h-9 sm:w-9 text-red-600 hover:text-red-700 hover:bg-red-100 rounded-xl">
+                <X className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </motion.div>
           </>
