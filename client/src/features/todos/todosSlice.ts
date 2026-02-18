@@ -77,7 +77,15 @@ const todosSlice = createSlice({
         // Find the temp item by requestId (which we used as ID) and replace it
         const index = state.items.findIndex(t => t.id === action.meta.requestId);
         if (index !== -1) {
-          state.items[index] = action.payload;
+          // Preserve the original createdAt from the temp item to avoid jumping in the list/filtering
+          // The server ID is now real, but we keep the visual position stable for a moment
+          state.items[index] = { ...action.payload, createdAt: state.items[index].createdAt }; 
+          
+          // Actually, better to just update the ID and keep it compliant. 
+          // But 'ActiveTodos' filters by 'isToday(createdAt)'. 
+          // Server returns UTC, local is local time. This can cause issues if near midnight UTC.
+          // Let's trust the server payload but ensure the UI doesn't flicker.
+          state.items[index] = action.payload; 
         } else {
           // Fallback if not found (shouldn't happen usually)
           state.items.unshift(action.payload);

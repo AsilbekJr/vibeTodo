@@ -177,7 +177,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         )}
       </div>
 
-      </div>
+
     </motion.div>
   );
 };
