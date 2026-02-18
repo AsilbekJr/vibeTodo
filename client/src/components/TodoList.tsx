@@ -77,13 +77,12 @@ const TodoList: React.FC = () => {
             ) : (
               <div className="space-y-3">
                 <AnimatePresence mode='popLayout'>
-                  {completedToday.map(todo => (
+                   {completedToday.map(todo => (
                     <div key={todo.id} className="relative group">
-                       <TodoItem todo={todo} />
-                       <div className="absolute top-4 right-14 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-xs px-2 py-1 rounded-md flex items-center gap-1 opacity-70 group-hover:opacity-100 transition-opacity">
-                         <Clock className="w-3 h-3" />
-                         {formatTime(todo.completedAt || todo.updatedAt)}
-                       </div>
+                       <TodoItem 
+                         todo={todo} 
+                         time={formatTime(todo.completedAt || todo.updatedAt)}
+                       />
                     </div>
                   ))}
                 </AnimatePresence>

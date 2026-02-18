@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface TodoItemProps {
   todo: Todo;
+  time?: string;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
@@ -128,6 +129,13 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
       </div>
 
       <div className="flex items-center gap-0 sm:gap-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-200 translate-x-0 lg:translate-x-2 lg:group-hover:translate-x-0 z-10">
+        {/* Time display if provided */}
+        {time && (
+          <span className="text-xs text-muted-foreground mr-2 hidden sm:inline-block">
+             {time}
+          </span>
+        )}
+        
         {isEditing ? (
           <>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
@@ -143,6 +151,31 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
           </>
         ) : (
           <>
+            {!todo.completed && (
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsEditing(true)}
+                  className="h-9 w-9 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-xl"
+                >
+                  <Pencil className="h-4 w-4" />
+                </Button>
+              </motion.div>
+            )}
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => dispatch(deleteTodo(todo.id))}
+                className="h-9 w-9 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-xl"
+              >
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </motion.div>
+          </>
+        )}
+      </div>
             {!todo.completed && (
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <Button
