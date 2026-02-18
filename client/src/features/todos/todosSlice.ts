@@ -61,8 +61,32 @@ const todosSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message || 'Error fetching todos';
       })
+      // Optimistic Add Todo
+      .addCase(addTodo.pending, (state, action) => {
+        const tempTodo: Todo = {
+          id: action.meta.requestId, // Use requestId as temp ID
+          title: action.meta.arg,
+          completed: false,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          completedAt: null,
+        };
+        state.items.unshift(tempTodo);
+      })
       .addCase(addTodo.fulfilled, (state, action) => {
-        state.items.unshift(action.payload);
+        // Find the temp item by requestId (which we used as ID) and replace it
+        const index = state.items.findIndex(t => t.id === action.meta.requestId);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        } else {
+          // Fallback if not found (shouldn't happen usually)
+          state.items.unshift(action.payload);
+        }
+      })
+      .addCase(addTodo.rejected, (state, action) => {
+        // Remove the temp item if request failed
+        state.items = state.items.filter(t => t.id !== action.meta.requestId);
+        state.error = action.error.message || 'Failed to add todo';
       })
       .addCase(updateTodoItem.fulfilled, (state, action) => {
         const index = state.items.findIndex((todo) => todo.id === action.payload.id);

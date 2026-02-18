@@ -10,10 +10,10 @@ import { Badge } from './components/ui/badge';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-purple-100 dark:from-gray-900 dark:via-gray-900 dark:to-slate-800 flex flex-col items-center py-6 sm:py-10 px-3 sm:px-6 transition-colors duration-500 selection:bg-primary/20">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-purple-100 dark:from-gray-900 dark:via-gray-900 dark:to-slate-800 flex flex-col items-center py-4 sm:py-10 px-2 sm:px-6 transition-colors duration-500 selection:bg-primary/20">
       <div className="w-full max-w-3xl animate-in fade-in-0 zoom-in-95 duration-500">
         
-        <header className="mb-6 sm:mb-8 text-center relative group cursor-default">
+        <header className="mb-4 sm:mb-8 text-center relative group cursor-default">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-primary/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
           
           <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-2xl mb-4 ring-1 ring-primary/20 shadow-lg shadow-primary/5 transition-transform duration-300 hover:scale-110 hover:rotate-3">
