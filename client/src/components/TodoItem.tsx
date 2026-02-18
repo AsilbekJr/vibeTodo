@@ -176,30 +176,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
           </>
         )}
       </div>
-            {!todo.completed && (
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsEditing(true)}
-                  className="h-9 w-9 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-xl"
-                >
-                  <Pencil className="h-4 w-4" />
-                </Button>
-              </motion.div>
-            )}
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => dispatch(deleteTodo(todo.id))}
-                className="h-9 w-9 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-xl"
-              >
-                <Trash2 className="h-4 w-4" />
-              </Button>
-            </motion.div>
-          </>
-        )}
+
       </div>
     </motion.div>
   );
