@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectTodos, type Todo } from '../features/todos/todosSlice';
 import TodoItem from './TodoItem';
-import { Calendar, CheckCircle2, ListTodo } from 'lucide-react';
+import { ListTodo } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { motion, AnimatePresence } from 'framer-motion';

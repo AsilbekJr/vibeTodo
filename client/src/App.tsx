@@ -20,8 +20,8 @@ const App: React.FC = () => {
             <ClipboardList size={32} className="text-primary" />
           </div>
           
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent drop-shadow-sm">
-            Vibe Todo
+          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent drop-shadow-sm p-3">
+            Kunlik Vazifalar
           </h1>
           
           <div className="flex items-center justify-center gap-2 text-muted-foreground font-medium">

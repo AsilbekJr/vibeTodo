@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTodos } from '../features/todos/todosSlice';
-import type { RootState, AppDispatch, Todo } from '../app/store';
+import type { RootState, AppDispatch } from '../app/store';
 import TodoItem from './TodoItem';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Trophy, History, Clock } from 'lucide-react';
-import { Separator } from './ui/separator';
+import { CheckCircle2, History, Clock } from 'lucide-react';
 
 const TodoList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
